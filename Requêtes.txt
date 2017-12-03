@@ -1,0 +1,43 @@
+Commandes Trimestrielles 
+------Selectionné les clients efféctuer les commandes de l'année 1997------------------
+SELECT DISTINCT clients.Code_client, clients.Societe, clients.Ville, Clients.Pays 
+FROM clients RIGHT JOIN commandes 
+ON clients.Code_client=Commandes.Code_client
+WHERE Commandes.Date_commande Between '1997-1-1' And '1997-12-31';
+
+ 1/1/1997 === 1997-1-1
+-----------------------------Factures-------------
+SELECT Commandes.Destinataire, Commandes.Adresse_livraison,
+ Commandes.Ville_livraison, Commandes.Region_livraison, Commandes.Pays_livraison, 
+Commandes.code_client, Clients.Societe, Clients.Adresse, Clients.Ville, 
+Clients.Region, Clients.Code_postal, Clients.Pays, 
+employes.Prenom , employes.Nom AS 'Vendeur', 
+Commandes.N°_commande, Commandes.Date_commande,Commandes.A_livrer_avant , 
+Commandes.Date_envoi, Messagers.Nom_de_messager, detailscommandes.Ref_produit, 
+Produits.Nom_du_produit, detailscommandes.Prix_unitaire , detailscommandes.quantite, 
+detailscommandes.Remise, ROUND( 
+    (detailscommandes.Prix_unitaire * detailscommandes.quantite * (1- detailscommandes.Remise /100 ) ), 2) AS `PrixTotal`, 
+Commandes.Port
+FROM Produits INNER JOIN (Messagers INNER JOIN (Employes INNER JOIN ((Clients INNER JOIN Commandes ON Clients.code_client = Commandes.code_client) INNER JOIN detailscommandes ON Commandes.N°_commande = detailscommandes.N°_commande) ON Employes.N°_employe = Commandes.N°_employe) ON Messagers.N°_messager = Commandes.N°_messager) ON Produits.Ref_produit = detailscommandes.Ref_produit ORDER BY  Commandes.Destinataire
+
+--------------------------Details Commandes Complets ----------------------------
+SELECT detailscommandes.N°_commande, detailscommandes.Ref_produit 
+, Produits.Nom_du_produit , detailscommandes.Prix_unitaire 
+, detailscommandes.Quantite , detailscommandes.Remise ,
+ ROUND( 
+        ( (detailscommandes.Prix_unitaire * detailscommandes.Quantite)*(1 - detailscommandes.Remise / 100 ) 
+       )) AS `PrixTotal`
+FROM Produits INNER JOIN detailscommandes 
+ON Produits.Ref_produit = detailscommandes.Ref_produit 
+ORDER BY detailscommandes.N°_commande
+
+------------------- FIltre Factures 
+SELECT Factures.*
+FROM Factures
+WHERE (((Factures.N°_commande)=para;
+------------------- LEs DIx Produits les plus chers 
+SELECT Produits.Nom_du_produit AS `LesDixProduitsLesPlusChers`  , Produits.Prix_unitaire
+FROM Produits
+ORDER BY Produits.Prix_unitaire DESC LIMIT 10
+
+
