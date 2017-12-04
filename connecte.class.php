@@ -17,32 +17,31 @@ class Connecte{
 		  while($donnees = $reponse->fetch())
 		    {
 	 	       echo $donnees[0]."</br>";
-  		  
+
 	       }
 			$reponse->closeCursor();
             */
-        
+
     }
     public function AfficheTable($table){
-       
+
        $rep = $GLOBALS['bdd']->query('SELECT * FROM '.$table);
         while( $donnees = $rep->fetch()){
-            echo $donnees[0]."</br>";
+
         }
-        $rep->closeCursor(); 
+        $rep->closeCursor();
          /* $i=0;
         $requete = $GLOBALS['bdd']->prepare("SELECT * FROM $table");
         $requete->execute();
         $rslt = $requete->fetchall();
         print_r($rslt);
         */
-       
+
     }
-     public function RequetSql($rq){
-       
+     public function  RequetSql($rq){
        $rep = $GLOBALS['bdd']->query($rq);
-            return $rep->fetch();
+        $d = $rep->fetch();
+            return $d ;
         }
-      
-    }
+      }
 ?>
