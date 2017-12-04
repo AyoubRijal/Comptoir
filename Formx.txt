@@ -1,0 +1,12 @@
+//=========Commandes ====" insertion dans la table commande============
+
+  Facturer a |  Table Clients  |  
+
+  Représentant | nom + prenom  table Employes |
+
+  N° Commande |  last + 1 de la table commande  |  ||  les dates  sont a saisir manuellement
+
+	-	-	-	-	-	-	-	-	- 	-
+ajout de produits + prix unitaire + (saisir)quantité + (saisir)remise + champs calc( prixTotal ) 
+
+======>  table commandes + saisir produits ===> details commande
