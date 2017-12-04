@@ -9,6 +9,10 @@ $(function(){
        //affiche la valeur de la combo
    // $(".t").val($('#choix').attr('data-adresse'));
        // Affecter la valuer d'adresse a l'input
+  //  alert( $('#choix').val()); 
+       //affiche la valeur de la combo
+   // $(".t").val($('#choix').attr('data-adresse'));
+       // Affecter la valuer d'adresse a l'input 
     //$('el).html('');
     //preprendTo('html') .befor
     //    alert($(this).children('option:selected').data('adresse'));
@@ -23,6 +27,7 @@ $(function(){
         $(".ville").val(ville);
         $(".region").val(region);
         $(".pays").val(pays);
+
    });
 
 });
