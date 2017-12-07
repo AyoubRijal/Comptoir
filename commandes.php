@@ -13,8 +13,8 @@
 	<title>Commandes</title>
 </head>
 <body>
-<div class="formulaire_commandes" style="width:800px;margin: 5% auto">
-
+<div claswxs="formulaire_commandes" style="width:800px;margin: 5% auto">
+<!--  scociete  champs CLIENTS -->
   <div class="partclient" style="float:left;width:400px">
       <label for="table"> facturér a : </label>
       <select  class="op" name="table"  class="col-md-6">
@@ -98,7 +98,7 @@
   </div>
 </div>
     <!-- Il faut une class  client -->
-    <script src="../js/jquery-3.2.1.min.js"></script>
-    <script src="../js/main.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/main.js"></script>
 </body>
 </html>

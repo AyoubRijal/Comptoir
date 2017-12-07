@@ -3,25 +3,21 @@ header('Content-type: text/html; charset=utf-8');
 class Connecte{
     public function Connecter()
     {
-    try
-		{
+      try
+		      {
             $GLOBALS['bdd'] = new PDO("mysql:host=localhost;dbname=comptoir;charset=utf8", 'root', '');
             $GLOBALS['bdd']->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-		}
-		catch (PDOException $e)
-		{
-       		  echo 'Erreur : ' . $e->getMessage();
-		}
+		        }catch (PDOException $e)
+		          {
+       		       echo 'Erreur : ' . $e->getMessage();
+		           }
       //     $GLOBALS['reponse'] = $bdd->query($req);
         /*
 		  while($donnees = $reponse->fetch())
 		    {
-	 	       echo $donnees[0]."</br>";
-
-	       }
+	 	       echo $donnees[0]."</br>";  }
 			$reponse->closeCursor();
             */
-
     }
     public function AfficheTable($table){
 

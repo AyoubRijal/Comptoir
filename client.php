@@ -2,8 +2,8 @@
 	<?php
 		// variables
 	   /* include_once('../connecte.class.php');
-	        $connect = new Connecte;
-	        $connect->Connecter();
+	        $cnx = new Connecte;
+	        $cnx->Connecter();
 */
 	?>
 <?php
@@ -27,10 +27,11 @@ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
 //connect to mysql database
 try{
-	$connect =mysqli_connect($servername,$username,$password,$dbname);
-}catch(MySQLi_Sql_Exception $ex){
+		$connect =mysqli_connect($servername,$username,$password,$dbname);
+		}catch(MySQLi_Sql_Exception $ex)
+		{
 	echo("error in connecting");
-}
+   }
 
          function getData(){
 
@@ -46,7 +47,7 @@ try{
         $data[8]=$_POST['_codepostal'];
         $data[9]=$_POST['_telephone'];
         $data[10]=$_POST['_fax'];
-          return $data;
+        return $data;
 }
         //rechercher
 
