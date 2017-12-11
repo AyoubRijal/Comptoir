@@ -4,6 +4,9 @@
     include_once('connecte.class.php');
         $cnx = new Connecte;
         $cnx->Connecter();
+     	include_once('clients.class.php');
+     					$client = new Clients();
+     					$client->connecter();
 
 ?>
 <!DOCTYPE html>
@@ -15,7 +18,7 @@
 <body>
 <div claswxs="formulaire_commandes" style="width:800px;margin: 5% auto">
 <!--  scociete  champs CLIENTS -->
-  <div class="partclient" style="float:left;width:400px">
+  <div class="partClient" style="float:left;width:400px">
       <label for="table"> facturér a : </label>
       <select  class="op" name="table"  class="col-md-6">
              <?php
@@ -50,7 +53,7 @@
   </div>
   <div style="">
   </div>
-  <div class="partclient" style="float:right;width:400px">
+  <div class="partClient" style="float:right;width:400px">
     <label for=""> Envoyé a :</label>
     <input type="text" class="societe" value="">
     <br>
@@ -66,7 +69,7 @@
      <input type="radio" name="check" class="massagers" value="Federal">Federal
   </div>
 
-  <div class="">
+  <div class="partEmployes">
   <!-- Repreésentant = nom&prénom table employes -->
     <label for="employes">Représentant</label>
     <select>
@@ -88,13 +91,56 @@
     </select>
     <br><br>
     <label for="ncommande">N° Cmd :</label>
-    <input type="text" name="ncommande" class="nCommande" value="" style="width:50px">
+    <input type="text" name="ncommande" class="nCommande" style="width:50px" value=" <?php $client->getNcommande(); ?>" disabled>
     <label for="dateCommande">Date Cmd :</label>
     <input type="date" name="dateCommande" class="dateCommande" value="" style="width:130px">
     <label for="livreAvant">Livrer Avant :</label>
    <input type="date" name="livreAvant" class="livreAvant" value="" style="width:130px">
    <label for="dateEnvoi">Date envoi :</label>
   <input type="date" name="dateEnvoi" class="dateEnvoi" value="" style="width:130px">
+  </div>
+  <div class="partProduit">
+    <table width="800px">
+      <th>Produit</th>
+      <th>Prix unitaire</th>
+      <th>Quantité</th>
+      <th>Remise(%)</th>
+      <th>PrixTotal</th>
+      <tr class="ligneproduit">
+        <td>
+          <select class="produit">
+          <?php
+          $reponse = $bdd->query(" SELECT  	Ref_produit , Nom_du_produit , Prix_unitaire  from produits ");
+            echo "<option> Choisis Produit  </option>";
+            while($produit = $reponse->fetch())
+                {
+          ?>
+            <option data-ref="<?php echo $produit['Ref_produit'] ?>"
+                data-prix ="<?php echo $produit['Prix_unitaire'] ?>"
+                value= "<?php echo $produit['Ref_produit']  ?> ">
+                 <?php echo $produit['Nom_du_produit'] ; ?>
+            </option>
+          <?php
+               }
+                $reponse->closeCursor();
+          ?>
+          </select>
+        </td>
+        <td>
+          <input  style="width:45px" type="text" class="inputprix"  disabled> £
+        </td>
+        <td>
+          <input type="text" style="width:50px" class="inputquatite" name="" value="">
+        </td>
+        <td>
+          <input type="text" style="width:50px" class="inputremise" name="" value="">
+        </td>
+        <td>
+          <input type="text" style="width:100px" class="inputprixtotal"name="" disabled>
+        </td>
+      </tr>
+    </table>
+    <p>+<p>
   </div>
 </div>
     <!-- Il faut une class  client -->

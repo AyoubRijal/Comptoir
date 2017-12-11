@@ -37,7 +37,7 @@ $fax='';
           return $data;
 }
         //rechercher
-
+			echo	$client->getNcommande();
          if(isset($_POST['rechercher']))
          {
 					  $code = getData()[0];

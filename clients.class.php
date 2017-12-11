@@ -64,6 +64,12 @@ class Clients extends Connecte
         $this->$telephone=$telephone;
         $this->$fax=$fax;
       }
+    public function getNcommande(){
+      $resultat = $GLOBALS['bdd']->query("SELECT N°_commande FROM `commandes` ORDER BY `N°_commande` DESC LIMIT 1");
+      $data =array();
+      $rows=$resultat->fetch();
+     echo ( $rows[0] + 1 );
+    }
   /*
  $servername = "localhost";
  $username="root";

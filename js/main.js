@@ -1,5 +1,6 @@
 $(function(){
  var cmbo = $('.op');
+ var produit = $('.produit');
 //var code_client = $('select').children('opition:selected').data('value');
 
    cmbo.on("change",function(){
@@ -30,5 +31,35 @@ $(function(){
         $(".societe").val($(this).children('option:selected').data('societe'));
 
    });
-
+    produit.on("change",function(){
+    var prix = $(this).children('option:selected').data('prix');
+        $(".inputprix").val(prix);
+   });
+   // $('').clone(t/f).appendto('');
+   var quantite = $('.inputquatite');
+   var remise = $('.inputremise');
+   var prix =$('.inputprix');
+   var total= $('.inputprixtotal');
+    quantite.on("focusout",function(){
+    if( isNaN($(this).val()) || $(this).val().trim() === ""){
+        alert("invalid");
+        }
+    else {
+      var t =  prix.val() * $(this).val() *(1 - remise.val()/100);
+      total.val(t);
+    }
+ // Prix_unitaire * quantite * (1- Remise /100)
+    });
+    remise.on("focusout",function(){
+    if( isNaN($(this).val()) || $(this).val().trim() === ""){
+        alert("invalid");
+        }
+    else {
+      var t =  prix.val() * $(this).val() *(1 - remise.val()/100);
+      total.val(t);
+    }
+    });
+    $('p').on("click",function(){
+      $('.ligneproduit').clone(true).appendTo('table');
+    });
 });

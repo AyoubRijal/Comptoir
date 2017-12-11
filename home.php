@@ -3,7 +3,7 @@
     include_once('connecte.class.php');
         $cnx = new Connecte;
         $cnx->Connecter();
-        
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,20 +12,20 @@
 	<title><?php echo "My first page php" ?></title>
 </head>
 <body>
- 
+
     <form action="Rquest.php" method="POST" enctype="multipart/form-data" >
         <select name="table"  class="col-md-6">
             <?php
             $reponse = $bdd->query('SHOW TABLES');
 		      while($donnees = $reponse->fetch())
-		      { 
+		      {
 	 	     ?>
 	 	         <option <?php "value=". $donnees[0]; ?> ><?php echo $donnees[0]; ?></option>
-  		    <?php	
+  		    <?php
 	           }
 			 $reponse->closeCursor();
   		    ?>
-  	 </select> 
+  	 </select>
     <input type="file" name="fileExp" id="">
     <input type="submit" value=" Importer ">
     </form>
@@ -64,7 +64,7 @@
     }
     ?>
     </table>
-    
+
 <script type="text/javascript">
   function setnull(){
     var form = document.getElementById('form1');
@@ -81,4 +81,4 @@
 </script>
 
 </body>
-</html> 
+</html>
